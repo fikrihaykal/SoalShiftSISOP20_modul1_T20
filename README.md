@@ -96,16 +96,16 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 *Gunakan Bash Script <br />
 
 ### Jawaban
-Terdiri dari 3 file shell, yaitu :
+Terdiri dari 3 file shell, yaitu : <br />
 2ab. <b>soal.sh</b><br />
      File ini digunakan untuk generate random password yang membutuhkan argument untuk penamaan file<br />
      - Pindah ke directory soal2 <br />
        Syntax : <br />
-       `cd ../soal2`
-     - Membuat file shell <b>soal.sh</b>
+       `cd ../soal2` <br />
+     - Membuat file shell <b>soal.sh</b> <br />
        Syntax : <br />
-       `nano soal2.sh`
-       Script bash dalam file <b>soal.sh</b>
+       `nano soal2.sh` <br />
+       Script bash dalam file <b>soal.sh</b> <br />
        ```bash
        #!bin/bash
 
