@@ -93,16 +93,16 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 
 ### Soal 2 a dan b 
 - membuat sebuah script bash yang dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. <br />
-- Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA berupa alphabet. <br />
-### Pembahasan Soal 2 a dan b
+- Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan <b>HANYA berupa alphabet</b>. <br />
+#### Pembahasan Soal 2 a dan b
 - Pindah ke directory soal2 <br />
   Syntax : <br />
   `cd ../soal2` <br />
-- Membuat file shell <b>soal.sh</b> <br />
+- Membuat file shell <b>soal2.sh</b> <br />
   File ini digunakan untuk generate random password yang membutuhkan argument untuk penamaan file<br />
   Syntax : <br />
   `nano soal2.sh` <br />
-  Script bash dalam file <b>soal.sh</b> <br />
+  Script bash ada didalam file <b>soal2.sh</b> <br />
   ```
   #!bin/bash
   
@@ -111,8 +111,27 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 
   head /dev/urandom | tr -dc A-Za-z0-9 | head -c 28 > $lowerfile
   ```
+- Menjalankan file <b>soal2.sh</b> dan membuat file berekstensi `.txt` dengan nama <b>sisop.txt</b>. <br /> 
+  Syntax : `nano soal2.sh sisop.txt` <br />
+- Memastikan file <b>sisop.txt</b> sudah berada di directory `soal2` <br />
+  Syntax : `ls` <br />
+  <b>ls</b> digunakan untuk menampilkan file-file pada directory tersebut. <br />
+- Menampilkan isi file <b>sisop.txt</b> 
+  Syntax : `cat sisop.txt`
+  ```
+  Au8dktuXbekPYUKJK8UpkY1IrqfA
+  ```
+  File <b>sisop.txt</b> berisi password acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. <br />
+##### Berikut tampilan <b>nomor 2 a dan b</b> pada linux:
+  ![2a](https://user-images.githubusercontent.com/16980689/75595198-f4c39a80-5abd-11ea-8073-40c6d2a55499.PNG)
 
+  
+
+### Soal 2 c
 - Kemudian supaya file .txt tersebut tidak mudah diketahui maka nama filenya akan dienkripsi dengan menggunakan konversi huruf (string manipulation) yang disesuaikan dengan jam(0-23) dibuatnya file tersebut dengan program terpisah dengan (misal: password.txt dibuat pada jam 01.28 maka namanya berubah menjadi qbttxpse.txt dengan perintah ‘bash soal2_enkripsi.sh password.txt’. Karena p adalah huruf ke 16 dan file dibuat pada jam 1 maka 16+1=17 dan huruf ke 17 adalah q dan begitu pula seterusnya. Apabila melebihi z, akan kembali ke a, contoh: huruf w dengan jam 5.28, maka akan menjadi huruf b. <br />
+
+#### Pembahasan Soal 2 c
+
 - Jangan lupa untuk membuat dekripsinya supaya nama file bisa kembali. <br />
 
 HINT: enkripsi yang digunakan adalah caesar cipher. <br />
