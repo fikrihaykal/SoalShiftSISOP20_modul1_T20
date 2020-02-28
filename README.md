@@ -86,10 +86,34 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
 
 
 # Soal 2
+Pada suatu siang, laptop Randolf dan Afairuzr dibajak oleh seseorang dan kehilangan data-data penting. Untuk mencegah kejadian yang sama terulang kembali mereka meminta bantuan kepada Whits karena dia adalah seorang yang punya banyak ide. Whits memikirkan sebuah ide namun dia meminta bantuan kalian kembali agar ide tersebut cepat diselesaikan. Idenya adalah kalian <br />
+- membuat sebuah script bash yang dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. <br />
+- Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA berupa alphabet. <br />
+- Kemudian supaya file .txt tersebut tidak mudah diketahui maka nama filenya akan dienkripsi dengan menggunakan konversi huruf (string manipulation) yang disesuaikan dengan jam(0-23) dibuatnya file tersebut dengan program terpisah dengan (misal: password.txt dibuat pada jam 01.28 maka namanya berubah menjadi qbttxpse.txt dengan perintah ‘bash soal2_enkripsi.sh password.txt’. Karena p adalah huruf ke 16 dan file dibuat pada jam 1 maka 16+1=17 dan huruf ke 17 adalah q dan begitu pula seterusnya. Apabila melebihi z, akan kembali ke a, contoh: huruf w dengan jam 5.28, maka akan menjadi huruf b. <br />
+- Jangan lupa untuk membuat dekripsinya supaya nama file bisa kembali. <br />
+
+HINT: enkripsi yang digunakan adalah caesar cipher. <br />
+*Gunakan Bash Script <br />
+
+### Jawaban
 Terdiri dari 3 file shell, yaitu :
-1. <b>soal.sh</b><br />
-   File ini digunakan untuk generate random password yang membutuhkan argument untuk penamaan file<br />
-   Contoh : <i>$</b> bash soal2.sh password</i>
+2ab. <b>soal.sh</b><br />
+     File ini digunakan untuk generate random password yang membutuhkan argument untuk penamaan file<br />
+     - Pindah ke directory soal2 <br />
+       Syntax : <br />
+       `cd ../soal2`
+     - Membuat file shell <b>soal.sh</b>
+       Syntax : <br />
+       `nano soal2.sh`
+       Script bash dalam file <b>soal.sh</b>
+       ```bash
+       #!bin/bash
+
+       read lowerfile <<< $(echo $1 | tr '[:upper:]' '[:lower:]' | cut -d "." -f1 | sed 's/[0-9]//g')
+       lowerfile+=.txt
+
+       head /dev/urandom | tr -dc A-Za-z0-9 | head -c 28 > $lowerfile
+       ```
 2. <b>soal2_enkripsi.sh</b><br />
    File ini digunakan untuk mengenkripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan dienkripsi<br />
    Contoh : <i>$</b> bash soal2_enkripsi.sh password.txt</i>
