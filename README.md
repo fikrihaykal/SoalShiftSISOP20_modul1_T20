@@ -317,6 +317,13 @@ Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil d
   ```
   5 6,*/8 * * 0-5 /home/hanaghaliyah/Downloads/Modul1/soal3/soal3.sh
   ```
+  Penjelasan :
+  `5` mendeklarasikan bahwa jadwal  pengunduhan terjadi setiap menit ke-5 <br />
+  `6,*/8` mendeklarasikan bahwa jadwal pengunduhan terjadi pada setiap 8 jam dari jam 6 <br /> 
+  `*` mendeklarasikan bahwa tanggal bebas <br /> 
+  `*` mendeklarasikan bahwa bulan bebas <br />
+  `0-5` mendeklarasikan bahwa jadwal pengunduhan terjadi setiap hari minggu hingga jum'at kecuali hari sabtu. <br />
+  `/home/hanaghaliyah/Downloads/Modul1/soal3/soal3.sh` digunakan untuk menjalankan script bash pada file soal3.sh yang terdapat di dalam direktori tersebut.
 
 ## KENDALA
 Laporan pendahuluan mengganggu liburan kami
