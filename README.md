@@ -282,7 +282,7 @@ Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil d
 - Agar file shell dapat dieksekusi <br />
   Syntax : `chmod +x soal3.sh`
 - Untuk menambahkan crontab (disesuaikan dengan file user) <br />
-  Syintax : `crontab -e`
+  Syintax : `crontab -e` <br />
   Script yang ada didalam file <b>crontab</b> 
   ```
   5 6,*/8 * * 0-5 /home/hanaghaliyah/Downloads/Modul1/soal3/soal3.sh
