@@ -110,7 +110,7 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 - Membuat file shell <b>soal2.sh</b> <br />
   File ini digunakan untuk generate random password yang membutuhkan argument untuk penamaan file<br />
   Syntax : `nano soal2.sh` <br />
-  Script bash ada didalam file <b>soal2.sh</b> <br />
+  Script bash yang ada didalam file <b>soal2.sh</b> <br />
   ```
   #!bin/bash
   
@@ -141,7 +141,7 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 - Membuat file shell <b>soal2_enkripsi.sh</b> <br />
   File ini digunakan untuk mengenkripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan dienkripsi<br />
   Syntax : `nano soal2_enkripsi.sh` <br />
-  Script bash ada didalam file <b>soal2_enkripsi.sh</b> <br />
+  Script bash yang ada didalam file <b>soal2_enkripsi.sh</b> <br />
   ```
   #!/bin/bash
 
@@ -175,7 +175,7 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 - Membuat file shell <b>soal2_dekripsi.sh</b> <br />
   File ini digunakan untuk mendekripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan didekripsi<br />
   Syntax : `nano soal2_dekripsi.sh` <br />
-  Script bash ada didalam file <b>soal2_dekripsi.sh</b> <br />
+  Script bash yang ada didalam file <b>soal2_dekripsi.sh</b> <br />
   ```
   #!/bin/bash
 
