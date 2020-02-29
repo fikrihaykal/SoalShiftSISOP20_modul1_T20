@@ -257,19 +257,19 @@ Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil d
   ```
 - Menjalankan file <b>soal3.sh</b> <br /> 
   Syntax : `bash soal3.sh` <br />
-  <b>Tampilan `nomor 3a` pada linux setelah file `soal3.sh` dijalankan</b>
+<b>Tampilan `nomor 3a` pada linux setelah file `soal3.sh` dijalankan</b>
   ![3a](https://user-images.githubusercontent.com/16980689/75597373-b8953780-5ac7-11ea-84f7-7ac66ff07cea.PNG)
   <br />
-  <b>Tampilan `nomor 3b` pada linux setelah file `soal3.sh` dijalankan</b>
+<b>Tampilan `nomor 3b` pada linux setelah file `soal3.sh` dijalankan</b>
   ![3kenangan](https://user-images.githubusercontent.com/16980689/75597379-be8b1880-5ac7-11ea-97d8-0a27d818a11a.PNG)
   <br />
-  <b>Tampilan `nomor 3c` pada linux setelah file `soal3.sh` dijalankan</b>
+<b>Tampilan `nomor 3c` pada linux setelah file `soal3.sh` dijalankan</b>
   ![3duplicate](https://user-images.githubusercontent.com/16980689/75597378-bd59eb80-5ac7-11ea-8811-780ac79a1f86.PNG)
   <br />
-  <b>Terdapat 2 folder (kenangan dan duplicate) pada directory soal3</b>
+<b>Terdapat 2 folder (kenangan dan duplicate) pada directory soal3</b>
   ![3b](https://user-images.githubusercontent.com/16980689/75597377-bc28be80-5ac7-11ea-9f48-1b745774013a.PNG)
   <br />
-- Selain itu terdapat file <b>crontab</b> yang berisi perintah crontab sesuai yang diminta soal
+<b>Selain itu terdapat file `crontab` yang berisi perintah crontab sesuai yang diminta soal </b>
 ![crontab](https://user-images.githubusercontent.com/16980689/75597233-df06a300-5ac6-11ea-9303-1d7bf5e7b6b0.PNG)
 - Agar file shell dapat dieksekusi
   Syntax : `chmod +x soal3.sh`
