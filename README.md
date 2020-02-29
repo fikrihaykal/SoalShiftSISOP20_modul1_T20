@@ -2,6 +2,7 @@
 Praktikum Sistem Operasi 2020 - Modul 1
 Departemen Teknologi Informasi
 
+Kelompok T20
 Anggota :
 - Fikri Haykal
 - Hana Ghaliyah Azhar
@@ -196,9 +197,86 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 
 
 # Soal 3
-Terdiri dari 1 file shell, yaitu :
-1. <b>soal3.sh</b><br />
-   File ini akan mengeksekusi sesuai permintaan semua sub-soal nomor 3<br />
-   Contoh : <i>$</b> bash soal3.sh</i>
-   
-Selain itu terdapat file <b>crontab</b> yang berisi perintah crontab sesuai yang diminta soal
+1 tahun telah berlalu sejak pencampakan hati Kusuma. Akankah sang pujaan hati kembali ke naungan Kusuma? Memang tiada maaf bagi Elen. Tapi apa daya hati yang sudah hancur, Kusuma masih terguncang akan sikap Elen. Melihat kesedihan Kusuma, kalian mencoba menghibur Kusuma dengan mengirimkan gambar kucing. <br />
+- Maka dari itu, kalian mencoba membuat script untuk mendownload 28 gambar dari https://loremflickr.com/320/240/cat menggunakan command wget dan menyimpan file dengan nama "pdkt_kusuma_NO" (contoh: pdkt_kusuma_1, pdkt_kusuma_2, pdkt_kusuma_3) serta jangan lupa untuk menyimpan log messages wget kedalam sebuah file wget.log . Karena kalian gak suka ribet, kalian membuat penjadwalan untuk menjalankan script download gambar tersebut. Namun, script download tersebut hanya berjalan <br />
+- Setiap 8 jam dimulai dari jam 6.05 setiap hari kecuali hari Sabtu. Karena gambar yang didownload dari link tersebut bersifat random, maka ada kemungkinan gambar yang terdownload itu identik. Supaya gambar yang identik tidak dikira Kusuma sebagai spam, maka diperlukan sebuah script untuk memindahkan salah satu gambar identik. Setelah memilah gambar yang identik, maka dihasilkan gambar yang berbeda antara satu dengan yang lain. Gambar yang berbeda tersebut, akan kalian kirim ke Kusuma supaya hatinya kembali ceria. Setelah semua gambar telah dikirim, kalian akan selalu menghibur Kusuma, jadi gambar yang telah terkirim tadi akan kalian simpan kedalam folder ./kenangan dan kalian bisa mendownload gambar baru lagi. <br />
+- Maka dari itu buatlah sebuah script untuk mengidentifikasi gambar yang identik dari keseluruhan gambar yang terdownload tadi. Bila terindikasi sebagai gambar yang identik, maka sisakan 1 gambar dan pindahkan sisa file identik tersebut ke dalam folder ./duplicate dengan format filename duplicate_nomor (contoh : duplicate_200, duplicate_201). Setelah itu lakukan pemindahan semua gambar yang tersisa kedalam folder ./kenangan dengan format filename kenangan_nomor (contoh: kenangan_252, kenangan_253). Setelah tidak ada gambar di current directory , maka lakukan backup seluruh log menjadi ekstensi .log.bak . <br />
+
+Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil dari grep "Location". <br />
+
+### Pembahasan Soal 3 
+- Pindah ke directory soal3 <br />
+  Syntax : `cd ../soal3` <br />
+- Membuat file shell <b>soal3.sh</b> <br />
+  File ini akan mengeksekusi sesuai permintaan semua sub-soal nomor 3<br />
+  Syntax : `nano soal3.sh` <br />
+  Script bash ada didalam file <b>soal3.sh</b> <br />
+  ```
+  #!bin/bash/
+
+  for((i=1; i<29; i++))
+  do
+    wget -cO "pdkt_kusuma_$i.jpg" -a "wget.log" "https://loremflickr.com/320/240/cat"
+  done
+
+  if [ ! -d kenangan ]
+  then
+    mkdir kenangan
+    mkdir duplicate
+  fi
+
+  for ((j=1; j<29; j++))
+  do
+    if [ -f "pdkt_kusuma_$j.jpg" ]
+    then
+      jml_kng=$(ls kenangan | wc -l)
+      for ((k=1; k<=jml_kng; k++))
+      do
+        convert pdkt_kusuma_$j.jpg gambar_asli.rgba
+        convert kenangan/kenangan_$k.jpg gambar_checker.rgba
+
+        cmp -s {gambar_asli,gambar_checker}.rgba
+        hasil=$?
+
+        if [[ $hasil -eq 0 ]]
+        then
+          gambar_duplikat=$(ls duplicate | wc -l)
+          mv pdkt_kusuma_$j.jpg duplicate/duplicate_$(($gambar_duplikat+1)).jpg
+          k=jml_kng+1
+        fi
+      done
+      if [ -f "pdkt_kusuma_$j.jpg" ]
+      then
+        mv pdkt_kusuma_$j.jpg kenangan/kenangan_$(($jml_kng+1)).jpg
+      fi
+    fi
+  done
+
+  cp wget.log wget.log.bak
+  rm *.rgba
+  ```
+- Menjalankan file <b>soal3.sh</b> <br /> 
+  Syntax : `bash soal3.sh` <br />
+  <b>Tampilan `nomor 3a` pada linux setelah file `soal3.sh` dijalankan</b>
+  ![3a](https://user-images.githubusercontent.com/16980689/75597373-b8953780-5ac7-11ea-84f7-7ac66ff07cea.PNG)
+  <br />
+  <b>Tampilan `nomor 3b` pada linux setelah file `soal3.sh` dijalankan</b>
+  ![3kenangan](https://user-images.githubusercontent.com/16980689/75597379-be8b1880-5ac7-11ea-97d8-0a27d818a11a.PNG)
+  <br />
+  <b>Tampilan `nomor 3c` pada linux setelah file `soal3.sh` dijalankan</b>
+  ![3duplicate](https://user-images.githubusercontent.com/16980689/75597378-bd59eb80-5ac7-11ea-8811-780ac79a1f86.PNG)
+  <br />
+  <b>Terdapat 2 folder (kenangan dan duplicate) pada directory soal3</b>
+  ![3b](https://user-images.githubusercontent.com/16980689/75597377-bc28be80-5ac7-11ea-9f48-1b745774013a.PNG)
+  <br />
+- Selain itu terdapat file <b>crontab</b> yang berisi perintah crontab sesuai yang diminta soal
+![crontab](https://user-images.githubusercontent.com/16980689/75597233-df06a300-5ac6-11ea-9303-1d7bf5e7b6b0.PNG)
+- Agar file shell dapat dieksekusi
+  Syntax : `chmod +x soal3.sh`
+- Untuk menambahkan crontab (disesuaikan dengan file user)
+  Syintax : `crontab -e`
+  Script yang ada didalam file <b>crontab</b> 
+  ```
+  5 6,*/8 * * 0-5 /home/hanaghaliyah/Downloads/Modul1/soal3/soal3.sh
+  ```
+
