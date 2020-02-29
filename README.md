@@ -43,7 +43,7 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
 - Menjalankan file shell <b>soal1.sh</b> menggunakan bash <br />
   <b>Bash</b> berfungsi sebagai penerjemah antara user dan sistem operasi (kernel). <br />
   Syntax : `bash soal1.sh` <br />
-  Tampilan "soal1.sh" setelah dijalankan
+  Tampilan <b>soal1.sh</b> setelah dijalankan
   ![hasil 1a](https://user-images.githubusercontent.com/26424136/75509861-9a71fd80-5a1b-11ea-9e4d-b74825f30c70.jpg) <br />
   Region `Central` memiliki profit paling sedikit yaitu sebesar `9706.4` 
 
