@@ -15,13 +15,13 @@ Whits adalah seorang mahasiswa teknik informatika. Dia mendapatkan tugas praktik
 Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan laporan tersebut. <br />
 *Gunakan AWK dan Command pendukung <br />
 
-### Soal 1 a
+### Soal 1a
 - Tentukan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling sedikit <br />
 
 #### Algoritma Penyelesaian Soal 1a
 - Menggunakan <b>gawk</b> untuk mencari seluruh baris/entry file <b>Sample-Superstore.tsv</b>. Kami mengelompokkan row/entry file tsv tersebut berdasarkan <b>Region</b> yang ada pada kolom 13. Setiap entry yang memiliki region yang sama, akan dijumlahkan total profitnya. Setelah itu kami menampilkan region dengan profit paling kecil dengan menggunakan sort by value. Kami juga menyimpan nama region dengan profit paling kecil sebagai variabel baru yang akan digunakan untuk soal 1b 
 
-#### Pembahasan Soal 1 a
+#### Pembahasan Soal 1a
 - Pindah ke directory soal1 <br />
   Syntax : `cd Downloads/Modul1/soal1` <br />
 - Membuat file shell "soal1.sh" <br />
@@ -50,13 +50,13 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
   ![hasil 1a](https://user-images.githubusercontent.com/26424136/75509861-9a71fd80-5a1b-11ea-9e4d-b74825f30c70.jpg) <br />
   Region `Central` memiliki profit paling sedikit yaitu sebesar `39706.4` 
 
-### Soal 1 b
+### Soal 1b
 - Tampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling sedikit berdasarkan poin a <br />
 
 #### Algoritma Penyelesaian Soal 1b
 - Hampir sama dengan soal nomor 1a, kami menggunakan <b>gawk</b> untuk mencari seluruh baris/entry file <b>Sample-Superstore.tsv</b>. Kami mengelompokkan row/entry file tsv tersebut berdasarkan <b>State</b> yang ada pada kolom 11. Bedanya disini kami hanya menggunakan row yang regionnya bernilai hasil dari soal nomor 1a. Setiap entry yang memiliki state yang sama, akan dijumlahkan total profitnya. Setelah itu kami menampilkan 2 state dengan profit paling kecil dengan menggunakan sort by value. Kami juga menyimpan 2 nama state dengan profit paling kecil kedalam sebuah file temp <b>temp1.txt</b> yang akan digunakan untuk soal 1c
 
-#### Pembahasan Soal 1 b
+#### Pembahasan Soal 1b
  - Script yang ada di dalam file <b>soal1.sh</b>
    ```
    gawk -F "\t" -v reg=$region 'NR>1 {if($13==reg){summm[$11] += $21}}
@@ -79,13 +79,13 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
   ![hasil 1b](https://user-images.githubusercontent.com/26424136/75510834-ccd12a00-5a1e-11ea-970a-b7578c9b7278.jpg) <br />
   2 negara bagian (state) yang memiliki profit terendah diregion <b>Central</b> yaitu `Illinois dan Texas` <br />
 
-### Soal 1 c
+### Soal 1c
 - Tampilkan 10 produk (product name) yang memiliki keuntungan (profit) paling sedikit berdasarkan 2 negara bagian (state) hasil poin b <br />
 
 #### Algoritma Penyelesaian Soal 1c
 - Hampir sama dengan soal nomor 1b, kami menggunakan <b>gawk</b> untuk mencari seluruh baris/entry file <b>Sample-Superstore.tsv</b>. Kami mengelompokkan row/entry file tsv tersebut berdasarkan <b>Product Name</b>. Untuk kali ini kami menggunakan row yang statenya bernilai variabel yang direstore dari file <b>temp1.txt</b>. Setiap entry yang memiliki product name yang sama, akan dijumlahkan total profitnya. Setelah itu kami menampilkan 10 produk dengan profit paling kecil dengan menggunakan sort by value dari 2 state hasil 1b.
 
-#### Pembahasan Soal 1 c
+#### Pembahasan Soal 1c
 - Script yang ada di dalam file <b>soal1.sh</b>
   ```
   echo "10 produk yang memiliki keuntungan paling rendah di negara "${state[0]}" atau negara "${state[1]}" adalah sebagai berikut."
@@ -191,10 +191,13 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
   Syntax : `ls` <br />
   Nama file `sisop.txt` berubah menjadi <b>`brbxy.txt`</b> setelah melakukan enkripsi.
 
-### Soal 2 d
+### Soal 2d
 - Jangan lupa untuk membuat dekripsinya supaya nama file bisa kembali. <br />
 
-#### Pembahasan Soal 2 d
+#### Algoritma Penyelesaian Soal 2d
+- Hampir sama dengan penyelesaian soal 2c, kami mengambil argumen yang merupakan nama file untuk didekripsi, kami menghapus ekstensi <b>.txt</b> dari argumen tersebut agar tidak ikut terdekripsi. Selain itu, kami juga mengambil <b>time</b> untuk key dari caesar cipher. Setelah itu, dengan formula caesar cipher, kami mengdekripsi argumen tadi dengan key dari jam yang sudah didapat. Setelah proses pengdekripsian selesai, kami menambahkan ekstensi <b>.txt</b> kedalam argumen tadi. Selanjutnya kami merubah nama file yang didekripsikan
+
+#### Pembahasan Soal 2d
 - Membuat file shell <b>soal2_dekripsi.sh</b> <br />
   File ini digunakan untuk mendekripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan didekripsi<br />
   Syntax : `nano soal2_dekripsi.sh` <br />
