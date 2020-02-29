@@ -45,7 +45,7 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
   Syntax : `bash soal1.sh` <br />
   Tampilan <b>soal1.sh</b> setelah dijalankan
   ![hasil 1a](https://user-images.githubusercontent.com/26424136/75509861-9a71fd80-5a1b-11ea-9e4d-b74825f30c70.jpg) <br />
-  Region `Central` memiliki profit paling sedikit yaitu sebesar `9706.4` 
+  Region `Central` memiliki profit paling sedikit yaitu sebesar `39706.4` 
 
 ### Soal 1 b
 - Tampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling sedikit berdasarkan poin a <br />
