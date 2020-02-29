@@ -279,9 +279,9 @@ Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil d
   
 ##### Selain itu terdapat file `crontab` yang berisi perintah crontab sesuai yang diminta soal </b>
 ![crontab](https://user-images.githubusercontent.com/16980689/75597233-df06a300-5ac6-11ea-9303-1d7bf5e7b6b0.PNG)
-- Agar file shell dapat dieksekusi
+- Agar file shell dapat dieksekusi <br />
   Syntax : `chmod +x soal3.sh`
-- Untuk menambahkan crontab (disesuaikan dengan file user)
+- Untuk menambahkan crontab (disesuaikan dengan file user) <br />
   Syintax : `crontab -e`
   Script yang ada didalam file <b>crontab</b> 
   ```
