@@ -317,3 +317,6 @@ Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil d
   ```
   5 6,*/8 * * 0-5 /home/hanaghaliyah/Downloads/Modul1/soal3/soal3.sh
   ```
+
+## KENDALA
+Laporan pendahuluan mengganggu liburan kami
