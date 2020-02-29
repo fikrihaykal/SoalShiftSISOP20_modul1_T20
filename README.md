@@ -40,12 +40,11 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
   echo "Region dengan profit terendah adalah "$region" dengan profit sebesar "$profit 
   printf "\n\n" 
   ```
-- Menjalankan file shell "soal1.sh" menggunakan bash <br />
+- Menjalankan file shell <b>soal1.sh</b> menggunakan bash <br />
   <b>Bash</b> berfungsi sebagai penerjemah antara user dan sistem operasi (kernel). <br />
-  Syntax : <br />
-  `bash soal1.sh` <br />
+  Syntax : `bash soal1.sh` <br />
   Tampilan "soal1.sh" setelah dijalankan
-  ![hasil 1a](https://user-images.githubusercontent.com/26424136/75509861-9a71fd80-5a1b-11ea-9e4d-b74825f30c70.jpg) 
+  ![hasil 1a](https://user-images.githubusercontent.com/26424136/75509861-9a71fd80-5a1b-11ea-9e4d-b74825f30c70.jpg) <br />
   Region `Central` memiliki profit paling sedikit yaitu sebesar `9706.4` 
 
 ### Soal 1 b
@@ -63,7 +62,7 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
    done < temp1.txt 
    printf "\n\n" 
    ```
-- Tampilan file shell "soal1.sh" setelah dijalankan menggunakan syntax `bash` <br />
+- Tampilan file shell <b>soal1.sh</b> setelah dijalankan menggunakan syntax `bash` <br />
   ![hasil 1b](https://user-images.githubusercontent.com/26424136/75510834-ccd12a00-5a1e-11ea-970a-b7578c9b7278.jpg) <br />
   2 negara bagian (state) yang memiliki profit terendah diregion <b>Central</b> yaitu `Illinois dan Texas` <br />
 
@@ -85,7 +84,7 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
   
   rm temp1.txt
   ```
-- Tampilan file shell "soal1.sh" setelah dijalankan menggunakan syntax `bash` <br />
+- Tampilan file shell <b>soal1.sh</b> setelah dijalankan menggunakan syntax `bash` <br />
   ![hasil 1c](https://user-images.githubusercontent.com/26424136/75511699-88935900-5a21-11ea-9269-732599ed7ef6.jpg) <br />
 
 #### Tampilan Nomor 1 keseluruhan pada linux
@@ -107,12 +106,10 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 - Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan <b>HANYA berupa alphabet</b>. <br />
 #### Pembahasan Soal 2 a dan b
 - Pindah ke directory soal2 <br />
-  Syntax : <br />
-  `cd ../soal2` <br />
+  Syntax : `cd ../soal2` <br />
 - Membuat file shell <b>soal2.sh</b> <br />
   File ini digunakan untuk generate random password yang membutuhkan argument untuk penamaan file<br />
-  Syntax : <br />
-  `nano soal2.sh` <br />
+  Syntax : `nano soal2.sh` <br />
   Script bash ada didalam file <b>soal2.sh</b> <br />
   ```
   #!bin/bash
