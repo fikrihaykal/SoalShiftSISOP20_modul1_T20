@@ -317,7 +317,7 @@ Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil d
   ```
   5 6,*/8 * * 0-5 /home/hanaghaliyah/Downloads/Modul1/soal3/soal3.sh
   ```
-  Penjelasan :
+  Penjelasan : <br />
   `5` mendeklarasikan bahwa jadwal  pengunduhan terjadi setiap menit ke-5 <br />
   `6,*/8` mendeklarasikan bahwa jadwal pengunduhan terjadi pada setiap 8 jam dari jam 6 <br /> 
   `*` mendeklarasikan bahwa tanggal bebas <br /> 
