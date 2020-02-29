@@ -118,7 +118,7 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
   <b>ls</b> digunakan untuk menampilkan file-file pada directory tersebut. <br />
 - Menampilkan isi file <b>sisop.txt</b> <br />
   Syntax : `cat sisop.txt` <br />
-  Password pada file <b>sisop.txt</br> : <br/> 
+  Password pada file <b>sisop.txt</b> : <br/> 
   ```
   Au8dktuXbekPYUKJK8UpkY1IrqfA
   ```
@@ -160,24 +160,39 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
   Syntax : `ls` <br />
   Nama file `sisop.txt` berubah menjadi <b>`brbxy.txt`</b> setelah melakukan enkripsi.
 
-
+### Soal 2 d
 - Jangan lupa untuk membuat dekripsinya supaya nama file bisa kembali. <br />
 
-HINT: enkripsi yang digunakan adalah caesar cipher. <br />
-*Gunakan Bash Script <br />
+#### Pembahasan Soal 2 d
+- Membuat file shell <b>soal2_dekripsi.sh</b> <br />
+  File ini digunakan untuk mendekripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan didekripsi<br />
+  Syntax : `nano soal2_dekripsi.sh` <br />
+  Script bash ada didalam file <b>soal2_dekripsi.sh</b> <br />
+  ```
+  #!/bin/bash
 
-### Jawaban
-Terdiri dari 3 file shell, yaitu : <br />
-2ab. <b>soal.sh</b><br />
-File ini digunakan untuk generate random password yang membutuhkan argument untuk penamaan file<br />
+  read lowerfile <<< $(echo $1 | tr '[:upper:]' '[:lower:]' | cut -f1 -d "." | sed 's/[0-9]//g')
 
-2. <b>soal2_enkripsi.sh</b><br />
-   
-   Contoh : <i>$</b> bash soal2_enkripsi.sh password.txt</i>
-3. <b>soal2_dekripsi.sh</b><br />
-   File ini digunakan untuk mendekripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan didekripsi<br />
-   Contoh : <i>$</b> bash soal2_dekripsi.sh ufxxbtwi.txt</i>
-   
+  jam=$(date +"%I")
+
+  export A=$(echo {a..z} | sed -r 's/ //g')
+  export C=$(echo $A | sed -r "s/^.{$jam}//g")$(echo $A | sed -r "s/.{$(expr 26 - $jam)}$//g")
+
+  read deknama <<< $(echo $lowerfile | tr '[A-Z]' $A | tr $C $A)
+  deknama+=.txt
+  lowerfile+=.txt
+
+  mv $lowerfile $deknama
+
+  ```
+- Menjalankan file <b>soal2_dekripsi.sh</b> dan file yang berekstensi `.txt` dengan nama <b>brbxy.txt</b>. <br /> 
+  Syntax : `bash soal2_dekripsi.sh brbxy.txt` <br />
+  
+##### Berikut tampilan <b>nomor 2 d</b> pada linux :  
+![2c](https://user-images.githubusercontent.com/16980689/75596580-c1840a00-5ac3-11ea-958e-ac5534076c30.PNG)
+- Memastikan file <b>brbxy.txt</b> sudah berganti nama pada directory `soal2` <br />
+  Syntax : `ls` <br />
+  Nama file `brbxy.txt` berubah ke nama file awal yaitu <b>`sisop.txt`</b> setelah melakukan dekripsi.
 
 
 # Soal 3
