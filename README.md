@@ -11,75 +11,84 @@ Anggota :
 
 # Soal 1
 Whits adalah seorang mahasiswa teknik informatika. Dia mendapatkan tugas praktikum untuk membuat laporan berdasarkan data yang ada pada file "Sample-Superstore". Namun dia tidak dapat menyelesaikan tugas tersebut. Laporan yang diminta berupa : <br />
-- Tentukan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling sedikit <br />
-- Tampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling sedikit berdasarkan poin a <br />
-- Tampilkan 10 produk (product name) yang memiliki keuntungan (profit) paling sedikit berdasarkan 2 negara bagian (state) hasil poin b <br />
 
 Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan laporan tersebut. <br />
 *Gunakan AWK dan Command pendukung <br />
 
-### Jawaban
-1a. Region yang memiliki Profit paling sedikit
+### Soal 1 a
+- Tentukan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling sedikit <br />
+
+#### Pembahasan Soal 1 a
 - Pindah ke directory soal1 <br />
-  Syntax : <br />
-  `cd Downloads/Modul1/soal1`
+  Syntax : `cd Downloads/Modul1/soal1` <br />
 - Membuat file shell "soal1.sh" <br />
-  Syntax : <br />
-  `nano soal1.sh` <br />
-- Isi file soal1.sh
-  > #!/bin/bash 
-  >
-  > declare -a state <br />
-  > c=0
-  >
-  > read region profit <<< $(gawk -F "\t" 'NR>1 {summm[$13] += $21} <br />
-  > END { <br />
-  > for(i in summm){ <br />
-  > print i, summm[i] <br />
-  > } <br />
-  > }' Sample-Superstore.tsv | LC_ALL=C sort -nrk2 | tail -1) <br />
-  >
-  > echo "Region dengan profit terendah adalah "$region" dengan profit sebesar "$profit <br />
-  > printf "\n\n" <br />
+  Syntax : `nano soal1.sh` <br />
+- Script yang ada di dalam file <b>soal1.sh</b>
+  ```
+  #!/bin/bash 
+  
+  declare -a state 
+  c=0
+  
+  read region profit <<< $(gawk -F "\t" 'NR>1 {summm[$13] += $21}
+  END { 
+  for(i in summm){
+  print i, summm[i] 
+  } 
+  }' Sample-Superstore.tsv | LC_ALL=C sort -nrk2 | tail -1) 
+  
+  echo "Region dengan profit terendah adalah "$region" dengan profit sebesar "$profit 
+  printf "\n\n" 
+  ```
 - Menjalankan file shell "soal1.sh" menggunakan bash <br />
   <b>Bash</b> berfungsi sebagai penerjemah antara user dan sistem operasi (kernel). <br />
   Syntax : <br />
   `bash soal1.sh` <br />
   Tampilan "soal1.sh" setelah dijalankan
-  ![hasil 1a](https://user-images.githubusercontent.com/26424136/75509861-9a71fd80-5a1b-11ea-9e4d-b74825f30c70.jpg) <br />
-  Region `Central` memiliki profit paling sedikit yaitu sebesar `9706.4` <br />
- 
- 1b. 2 state yang memiliki profit paling sedikit berdasarkan poin a 
- - Isi file shell "soal1.sh" <br />
-   > echo "2 negara yang memiliki profit terendah di region "$region" adalah" <br />
-   > while IFS= read -r line; <br />
-   > do <br />
-   >   state+=($line) <br />
-   >   echo "- "${state[c]} <br />
-   >   c=$c+1 <br />
-   > done < temp1.txt <br />
-   > printf "\n\n" <br />
+  ![hasil 1a](https://user-images.githubusercontent.com/26424136/75509861-9a71fd80-5a1b-11ea-9e4d-b74825f30c70.jpg) 
+  Region `Central` memiliki profit paling sedikit yaitu sebesar `9706.4` 
+
+### Soal 1 b
+- Tampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling sedikit berdasarkan poin a <br />
+
+#### Pembahasan Soal 1 b
+ - Script yang ada di dalam file <b>soal1.sh</b>
+   ```
+   echo "2 negara yang memiliki profit terendah di region "$region" adalah"
+   while IFS= read -r line; 
+   do 
+     state+=($line) 
+     echo "- "${state[c]} 
+     c=$c+1 
+   done < temp1.txt 
+   printf "\n\n" 
+   ```
 - Tampilan file shell "soal1.sh" setelah dijalankan menggunakan syntax `bash` <br />
   ![hasil 1b](https://user-images.githubusercontent.com/26424136/75510834-ccd12a00-5a1e-11ea-970a-b7578c9b7278.jpg) <br />
   2 negara bagian (state) yang memiliki profit terendah diregion <b>Central</b> yaitu `Illinois dan Texas` <br />
+
+### Soal 1 c
+- Tampilkan 10 produk (product name) yang memiliki keuntungan (profit) paling sedikit berdasarkan 2 negara bagian (state) hasil poin b <br />
+
+#### Pembahasan Soal 1 c
+- Script yang ada di dalam file <b>soal1.sh</b>
+  ```
+  echo "10 produk yang memiliki keuntungan paling rendah di negara "${state[0]}" atau negara "${state[1]}" adalah sebagai berikut."
+  echo "-------------------------------------------------------------------" 
   
-1c. 10 product name yang memiliki profit paling sedikit berdasarkan 2 state hasil poin b  
-- Isi file shell "soal1.sh" <br />
-  > echo "10 produk yang memiliki keuntungan paling rendah di negara "${state[0]}" atau negara "${state[1]}" adalah sebagai berikut." <br />
-  > echo "-------------------------------------------------------------------" <br />
-  >
-  > gawk -F "\t" -v stat1=${state[0]} -v stat2=${state[1]} 'NR>1 {if(($11==stat1) || ($11==stat2)){summm[$17] += $21}} <br />
-  > END { <br />
-  >  for(k in summm){ <br />
-  >    print "- "k";"summm[k] <br />
-  >  } <br />
-  > }' Sample-Superstore.tsv | LC_ALL=C sort -gk2 -t ";" | head -10 | cut -d ";" -f1 <br />
-  >
-  > rm temp1.txt <br />
+  gawk -F "\t" -v stat1=${state[0]} -v stat2=${state[1]} 'NR>1 {if(($11==stat1) || ($11==stat2)){summm[$17] += $21}} 
+  END { 
+    for(k in summm){ 
+    print "- "k";"summm[k] 
+    } 
+  }' Sample-Superstore.tsv | LC_ALL=C sort -gk2 -t ";" | head -10 | cut -d ";" -f1
+  
+  rm temp1.txt
+  ```
 - Tampilan file shell "soal1.sh" setelah dijalankan menggunakan syntax `bash` <br />
   ![hasil 1c](https://user-images.githubusercontent.com/26424136/75511699-88935900-5a21-11ea-9269-732599ed7ef6.jpg) <br />
 
-##### Tampilan Nomor 1 keseluruhan pada linux
+#### Tampilan Nomor 1 keseluruhan pada linux
 - syntax `nano soal1.sh`
 ![1](https://user-images.githubusercontent.com/26424136/75511932-61895700-5a22-11ea-9794-31a33282d23f.PNG)
 - syntax `bash soal1.sh`
@@ -258,19 +267,20 @@ Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil d
   ```
 - Menjalankan file <b>soal3.sh</b> <br /> 
   Syntax : `bash soal3.sh` <br />
-<b>Tampilan `nomor 3a` pada linux setelah file `soal3.sh` dijalankan</b>
+  
+##### Tampilan `nomor 3a` pada linux setelah file `soal3.sh` dijalankan
   ![3a](https://user-images.githubusercontent.com/16980689/75597373-b8953780-5ac7-11ea-84f7-7ac66ff07cea.PNG)
-  <br />
-<b>Tampilan `nomor 3b` pada linux setelah file `soal3.sh` dijalankan</b>
+  
+##### Tampilan `nomor 3b` pada linux setelah file `soal3.sh` dijalankan</b>
   ![3kenangan](https://user-images.githubusercontent.com/16980689/75597379-be8b1880-5ac7-11ea-97d8-0a27d818a11a.PNG)
-  <br />
-<b>Tampilan `nomor 3c` pada linux setelah file `soal3.sh` dijalankan</b>
+  
+##### Tampilan `nomor 3c` pada linux setelah file `soal3.sh` dijalankan</b>
   ![3duplicate](https://user-images.githubusercontent.com/16980689/75597378-bd59eb80-5ac7-11ea-8811-780ac79a1f86.PNG)
-  <br />
-<b>Terdapat 2 folder (kenangan dan duplicate) pada directory soal3</b>
+  
+##### Terdapat 2 folder (kenangan dan duplicate) pada directory soal3</b>
   ![3b](https://user-images.githubusercontent.com/16980689/75597377-bc28be80-5ac7-11ea-9f48-1b745774013a.PNG)
-  <br />
-<b>Selain itu terdapat file `crontab` yang berisi perintah crontab sesuai yang diminta soal </b>
+  
+##### Selain itu terdapat file `crontab` yang berisi perintah crontab sesuai yang diminta soal </b>
 ![crontab](https://user-images.githubusercontent.com/16980689/75597233-df06a300-5ac6-11ea-9303-1d7bf5e7b6b0.PNG)
 - Agar file shell dapat dieksekusi
   Syntax : `chmod +x soal3.sh`
@@ -280,4 +290,3 @@ Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil d
   ```
   5 6,*/8 * * 0-5 /home/hanaghaliyah/Downloads/Modul1/soal3/soal3.sh
   ```
-
