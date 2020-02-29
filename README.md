@@ -18,7 +18,7 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
 ### Soal 1 a
 - Tentukan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling sedikit <br />
 
-#### Penjelasan Source Code Soal 1a
+#### Algoritma Penyelesaian Soal 1a
 - Menggunakan <b>gawk</b> untuk mencari seluruh baris/entry file <b>Sample-Superstore.tsv</b>. Kami mengelompokkan row/entry file tsv tersebut berdasarkan <b>Region</b> yang ada pada kolom 13. Setiap entry yang memiliki region yang sama, akan dijumlahkan total profitnya. Setelah itu kami menampilkan region dengan profit paling kecil dengan menggunakan sort by value. Kami juga menyimpan nama region dengan profit paling kecil sebagai variabel baru yang akan digunakan untuk soal 1b 
 
 #### Pembahasan Soal 1 a
@@ -53,9 +53,19 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
 ### Soal 1 b
 - Tampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling sedikit berdasarkan poin a <br />
 
+#### Algoritma Penyelesaian Soal 1b
+- Hampir sama dengan soal nomor 1a, kami menggunakan <b>gawk</b> untuk mencari seluruh baris/entry file <b>Sample-Superstore.tsv</b>. Kami mengelompokkan row/entry file tsv tersebut berdasarkan <b>State</b> yang ada pada kolom 11. Bedanya disini kami hanya menggunakan row yang regionnya bernilai hasil dari soal nomor 1a. Setiap entry yang memiliki state yang sama, akan dijumlahkan total profitnya. Setelah itu kami menampilkan 2 state dengan profit paling kecil dengan menggunakan sort by value. Kami juga menyimpan 2 nama state dengan profit paling kecil kedalam sebuah file temp <b>temp1.txt</b> yang akan digunakan untuk soal 1c
+
 #### Pembahasan Soal 1 b
  - Script yang ada di dalam file <b>soal1.sh</b>
    ```
+   gawk -F "\t" -v reg=$region 'NR>1 {if($13==reg){summm[$11] += $21}}
+   END {
+     for(j in summm){
+       print j, summm[j]
+     }
+   }' Sample-Superstore.tsv | LC_ALL=C sort -nrk2 | tail -2 | cut -d " " -f1 > temp1.txt
+   
    echo "2 negara yang memiliki profit terendah di region "$region" adalah"
    while IFS= read -r line; 
    do 
@@ -71,6 +81,9 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
 
 ### Soal 1 c
 - Tampilkan 10 produk (product name) yang memiliki keuntungan (profit) paling sedikit berdasarkan 2 negara bagian (state) hasil poin b <br />
+
+#### Algoritma Penyelesaian Soal 1c
+- Hampir sama dengan soal nomor 1b, kami menggunakan <b>gawk</b> untuk mencari seluruh baris/entry file <b>Sample-Superstore.tsv</b>. Kami mengelompokkan row/entry file tsv tersebut berdasarkan <b>Product Name</b>. Untuk kali ini kami menggunakan row yang statenya bernilai variabel yang direstore dari file <b>temp1.txt</b>. Setiap entry yang memiliki product name yang sama, akan dijumlahkan total profitnya. Setelah itu kami menampilkan 10 produk dengan profit paling kecil dengan menggunakan sort by value dari 2 state hasil 1b.
 
 #### Pembahasan Soal 1 c
 - Script yang ada di dalam file <b>soal1.sh</b>
