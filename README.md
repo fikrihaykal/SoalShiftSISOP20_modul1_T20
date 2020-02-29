@@ -3,6 +3,7 @@ Praktikum Sistem Operasi 2020 - Modul 1
 Departemen Teknologi Informasi
 
 Kelompok T20
+
 Anggota :
 - Fikri Haykal
 - Hana Ghaliyah Azhar
