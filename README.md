@@ -47,6 +47,9 @@ Whits memohon kepada kalian yang sudah jago mengolah data untuk mengerjakan lapo
   ![hasil 1a](https://user-images.githubusercontent.com/26424136/75509861-9a71fd80-5a1b-11ea-9e4d-b74825f30c70.jpg) <br />
   Region `Central` memiliki profit paling sedikit yaitu sebesar `39706.4` 
 
+#### Penjelasan Source Code Soal 1a
+  Menggunakan <b>gawk</b> untuk mencari seluruh baris/entry file <b>Sample-Superstore.tsv</b>. Kami mengelompokkan row/entry file tsv tersebut berdasarkan <b>Region</b> yang ada pada kolom 13. Setiap entry yang memiliki region yang sama, akan dijumlahkan total profitnya. Setelah itu kami menampilkan region dengan profit paling kecil dengan menggunakan sort by value. Kami juga menyimpan nama region dengan profit paling kecil sebagai variabel baru yang akan digunakan untuk soal 1b 
+
 ### Soal 1 b
 - Tampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling sedikit berdasarkan poin a <br />
 
