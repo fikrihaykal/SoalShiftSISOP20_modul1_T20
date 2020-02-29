@@ -123,7 +123,7 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
   Au8dktuXbekPYUKJK8UpkY1IrqfA
   ```
   File <b>sisop.txt</b> berisi password acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. <br />
-##### Berikut tampilan <b>nomor 2 a dan b</b> pada linux:
+##### Berikut tampilan `nomor 2 a dan b` pada linux:
   ![2a](https://user-images.githubusercontent.com/16980689/75595198-f4c39a80-5abd-11ea-8073-40c6d2a55499.PNG)
 
 ### Soal 2 c
@@ -158,7 +158,7 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 ![2b](https://user-images.githubusercontent.com/16980689/75595990-2db13e80-5ac1-11ea-8b4b-4528480c95de.PNG)
 - Memastikan file <b>sisop.txt</b> sudah berganti nama pada directory `soal2` <br />
   Syntax : `ls` <br />
-  Nama file `sisip.txt` berubah menjadi <b>`brbxy.txt`</b> setelah melakukan enkripsi.
+  Nama file `sisop.txt` berubah menjadi <b>`brbxy.txt`</b> setelah melakukan enkripsi.
 
 
 - Jangan lupa untuk membuat dekripsinya supaya nama file bisa kembali. <br />
