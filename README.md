@@ -112,12 +112,13 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
   head /dev/urandom | tr -dc A-Za-z0-9 | head -c 28 > $lowerfile
   ```
 - Menjalankan file <b>soal2.sh</b> dan membuat file berekstensi `.txt` dengan nama <b>sisop.txt</b>. <br /> 
-  Syntax : `nano soal2.sh sisop.txt` <br />
+  Syntax : `bash soal2.sh sisop.txt` <br />
 - Memastikan file <b>sisop.txt</b> sudah berada di directory `soal2` <br />
   Syntax : `ls` <br />
   <b>ls</b> digunakan untuk menampilkan file-file pada directory tersebut. <br />
-- Menampilkan isi file <b>sisop.txt</b> 
-  Syntax : `cat sisop.txt`
+- Menampilkan isi file <b>sisop.txt</b> <br />
+  Syntax : `cat sisop.txt` <br />
+  Password pada file <b>sisop.txt</br> : <br/> 
   ```
   Au8dktuXbekPYUKJK8UpkY1IrqfA
   ```
@@ -125,12 +126,40 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 ##### Berikut tampilan <b>nomor 2 a dan b</b> pada linux:
   ![2a](https://user-images.githubusercontent.com/16980689/75595198-f4c39a80-5abd-11ea-8073-40c6d2a55499.PNG)
 
-  
-
 ### Soal 2 c
 - Kemudian supaya file .txt tersebut tidak mudah diketahui maka nama filenya akan dienkripsi dengan menggunakan konversi huruf (string manipulation) yang disesuaikan dengan jam(0-23) dibuatnya file tersebut dengan program terpisah dengan (misal: password.txt dibuat pada jam 01.28 maka namanya berubah menjadi qbttxpse.txt dengan perintah ‘bash soal2_enkripsi.sh password.txt’. Karena p adalah huruf ke 16 dan file dibuat pada jam 1 maka 16+1=17 dan huruf ke 17 adalah q dan begitu pula seterusnya. Apabila melebihi z, akan kembali ke a, contoh: huruf w dengan jam 5.28, maka akan menjadi huruf b. <br />
 
 #### Pembahasan Soal 2 c
+- Membuat file shell <b>soal2_enkripsi.sh</b> <br />
+  File ini digunakan untuk mengenkripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan dienkripsi<br />
+  Syntax : `nano soal2_enkripsi.sh` <br />
+  Script bash ada didalam file <b>soal2_enkripsi.sh</b> <br />
+  ```
+  #!/bin/bash
+
+  read lowerfile <<< $(echo $1 | tr '[:upper:]' '[:lower:]' | cut -f1 -d "." | sed 's/[0-9]//g')
+  #echo $lowerfile
+
+  jam=$(date +"%I")
+
+  export A=$(echo {a..z} | sed -r 's/ //g')
+  export C=$(echo $A | sed -r "s/^.{$jam}//g")$(echo $A | sed -r "s/.{$(expr 26 - $jam)}$//g")
+  
+  read namafile <<< $(echo $lowerfile | tr '[A-Z]' $A | tr $A $C)
+  namafile+=.txt
+  
+  lowerfile+=.txt
+  
+  mv $lowerfile $namafile
+  ```
+- Menjalankan file <b>soal2_enkripsi.sh</b> dan file yang berekstensi `.txt` dengan nama <b>sisop.txt</b>. <br /> 
+  Syntax : `bash soal2_enkripsi.sh sisop.txt` <br />
+##### Berikut tampilan <b>nomor 2 c</b> pada linux :  
+![2b](https://user-images.githubusercontent.com/16980689/75595990-2db13e80-5ac1-11ea-8b4b-4528480c95de.PNG)
+- Memastikan file <b>sisop.txt</b> sudah berganti nama pada directory `soal2` <br />
+  Syntax : `ls` <br />
+  Nama file `sisip.txt` berubah menjadi <b>`brbxy.txt`</b> setelah melakukan enkripsi.
+
 
 - Jangan lupa untuk membuat dekripsinya supaya nama file bisa kembali. <br />
 
@@ -143,7 +172,7 @@ Terdiri dari 3 file shell, yaitu : <br />
 File ini digunakan untuk generate random password yang membutuhkan argument untuk penamaan file<br />
 
 2. <b>soal2_enkripsi.sh</b><br />
-   File ini digunakan untuk mengenkripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan dienkripsi<br />
+   
    Contoh : <i>$</b> bash soal2_enkripsi.sh password.txt</i>
 3. <b>soal2_dekripsi.sh</b><br />
    File ini digunakan untuk mendekripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan didekripsi<br />
