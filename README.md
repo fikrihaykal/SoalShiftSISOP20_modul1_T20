@@ -117,10 +117,14 @@ Pada suatu siang, laptop Randolf dan Afairuzr dibajak oleh seseorang dan kehilan
 HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 *Gunakan Bash Script <br />
 
-### Soal 2 a dan b 
+### Soal 2a dan 2b 
 - membuat sebuah script bash yang dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. <br />
 - Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan <b>HANYA berupa alphabet</b>. <br />
-#### Pembahasan Soal 2 a dan b
+
+#### Algoritma Penyelesaian Soal 2a dan 2b
+- Mengambil argumen untuk digunakan sebagai penamaan file untuk menyimpan password. Namun, argumen tersebut difilter untuk dihilangkan numeric dan symbol yang ada. Setelah itu dilakukan generating password yang terdiri dari huruf kapital, huruf kecil serta angka dengan panjang 28 karakter. Hasil generate password tersebut disimpan kedalam sebuah file dengan nama dari argumen yang sudah difilter tadi
+
+#### Pembahasan Soal 2a dan 2b
 - Pindah ke directory soal2 <br />
   Syntax : `cd ../soal2` <br />
 - Membuat file shell <b>soal2.sh</b> <br />
@@ -150,10 +154,13 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 ##### Berikut tampilan `nomor 2 a dan b` pada linux:
   ![2a](https://user-images.githubusercontent.com/16980689/75595198-f4c39a80-5abd-11ea-8073-40c6d2a55499.PNG)
 
-### Soal 2 c
+### Soal 2c
 - Kemudian supaya file .txt tersebut tidak mudah diketahui maka nama filenya akan dienkripsi dengan menggunakan konversi huruf (string manipulation) yang disesuaikan dengan jam(0-23) dibuatnya file tersebut dengan program terpisah dengan (misal: password.txt dibuat pada jam 01.28 maka namanya berubah menjadi qbttxpse.txt dengan perintah ‘bash soal2_enkripsi.sh password.txt’. Karena p adalah huruf ke 16 dan file dibuat pada jam 1 maka 16+1=17 dan huruf ke 17 adalah q dan begitu pula seterusnya. Apabila melebihi z, akan kembali ke a, contoh: huruf w dengan jam 5.28, maka akan menjadi huruf b. <br />
 
-#### Pembahasan Soal 2 c
+#### Algoritma Penyelesaian Soal 2c
+- Mengambil argumen yang merupakan nama file untuk dienkripsi, kami menghapus ekstensi <b>.txt</b> dari argumen tersebut agar tidak ikut terenkripsi. Selain itu, kami juga mengambil <b>time</b> untuk key dari caesar cipher. Setelah itu, dengan formula caesar cipher, kami mengenkripsi argumen tadi dengan key dari jam yang sudah didapat. Setelah proses pengenkripsian selesai, kami menambahkan ekstensi <b>.txt</b> kedalam argumen tadi. Selanjutnya kami merubah nama file yang dienkripsikan
+
+#### Pembahasan Soal 2c
 - Membuat file shell <b>soal2_enkripsi.sh</b> <br />
   File ini digunakan untuk mengenkripsi file. Penggunaannya adalah dengan menambahkan argument nama file yang akan dienkripsi<br />
   Syntax : `nano soal2_enkripsi.sh` <br />
