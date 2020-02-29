@@ -237,6 +237,10 @@ HINT: enkripsi yang digunakan adalah caesar cipher. <br />
 
 Hint : Gunakan wget.log untuk membuat location.log yang isinya merupakan hasil dari grep "Location". <br />
 
+#### Algoritma Penyelesaian Soal 3
+- Mengunduh 28 gambar dari link yang disediakan dengan <b>looping wget</b>. Jika sudah terdownload, maka akan membuat folder `kenangan` dan folder `duplicate` jika belum tersedia. Kemudian mengecek setiap gambar `pdkt_kusuma_x.jpg` dengan gambar yang ada di dalam folder `kenangan` untuk dideteksi merupakan gambar yang sama atau bukan (jika folder kenangan kosong, maka langsung dipindah dalam folder kenangan). Gambar yang sama akan dipindah ke dalam folder `duplicate` dengan nama `duplicate_x.jpg`, sedangkan gambar yang berbeda akan disimpan dalam folder `kenangan` dengan nama `kenangan_x.jpg`. Metode yang kami gunakan untuk membandingkan kedua gambar adalah dengan mengkonversikan kedua gambar tersebut kedalam format <b>rgba</b>. Tidak lupa kami menyimpan dan membuat backup gambar yang diunduh tadi kedalam file log.
+- Agar program ini dapat dieksekusi otomatis sesuai dengan jam yang diminta, kami menggunakan perintah `crontab -e` dan menyetel command. Tidak lupa menambahkan `chmod +x soal3.sh` agar file dapat dieksekusi
+
 ### Pembahasan Soal 3 
 - Pindah ke directory soal3 <br />
   Syntax : `cd ../soal3` <br />
